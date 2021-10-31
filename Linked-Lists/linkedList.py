@@ -33,7 +33,55 @@ class LinkedList:
             ptr = ptr.next
         ptr.next = Node(data)
 
-   # def insert_at_K(self, data, k):
+    def insert_at_K(self, data, k):
+        if k < 0:
+            print('Invalid position')
+        
+        #Case 1: K = 0 -> insert at head
+        if k == 0:
+            self.insert_at_head(data)
+            return
+        
+        count = 0
+        ptr = self.head
+
+        while ptr:
+            if count == k-1:
+                break
+            ptr = ptr.next
+            count += 1
+        
+        if count <= k-1 and not ptr:
+            print('Index out of bounds')
+            return
+        # Case 2: Insert somewhere in the middle of the list
+        if count == k-1 and ptr.next:
+            new_node = Node(data)
+            new_node.next = ptr.next
+            ptr.next = new_node
+        # Case 3: Insert Node at the tail
+        else:
+            self.insert_at_tail(data)
+
+    def search(self, data):
+        if not self.head:
+            return False
+        
+        ptr = self.head
+        while ptr:
+            if ptr.data == data:
+                return True
+            ptr = ptr.next
+        return False
+    
+    # def search_recursion(self, lst, data):
+    #     if not lst.head:
+    #         return False
+
+    #     if lst.head.data == data:
+    #         return True
+        
+    #     return self.search_recursion(lst.head.next, data)
 
 
     def print_list(self):
@@ -48,12 +96,14 @@ class LinkedList:
         print('None')
 
 LL = LinkedList()
-LL.print_list()
-print('Inserting values into list')
 for i in range(5):
     LL.insert_at_head(i)
 
 LL.print_list()
-LL.insert_at_tail(420)
-LL.print_list()
+
+# print(LL.search_recursion(2))
+
+
+
+
 
