@@ -41,6 +41,14 @@ def find_minimum1(lst):
     merge_sort(lst)
     return lst[0]
 
-lst = [2,-100,5,6,-7,8,9,3,2]
+def find_minimum2(lst):
+    min = lst[0]
+    for item in lst:
+        if item < min:
+            min = item
+    return min
 
-print(find_minimum1(lst))
+lst = [2,-200,5,6,-7,8,9,3,2]
+
+
+print(find_minimum2(lst))
