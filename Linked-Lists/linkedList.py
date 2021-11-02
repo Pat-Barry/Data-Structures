@@ -63,6 +63,31 @@ class LinkedList:
         else:
             self.insert_at_tail(data)
 
+    def delete_head(self):
+        if not self.head:
+            return
+        temp = self.head
+        self.head = self.head.next
+        temp = None
+    
+    def delete(self, data):
+        if self.is_empty():
+            return False
+        if self.head.data == data:
+            self.delete_head()
+            return True
+
+        ptr = self.head
+        prev = None
+
+        while ptr:
+            if ptr.data == data:
+                prev.next = ptr.next
+                return True
+            prev = ptr
+            ptr = ptr.next
+        return False
+
     def search(self, data):
         if not self.head:
             return False
@@ -100,7 +125,8 @@ for i in range(5):
     LL.insert_at_head(i)
 
 LL.print_list()
-
+LL.delete(0)
+LL.print_list()
 # print(LL.search_recursion(2))
 
 
