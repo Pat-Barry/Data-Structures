@@ -108,6 +108,18 @@ class LinkedList:
         
         return self.search_recursion(head.next, data)
 
+    def reverse(self):
+        prev = None
+        ptr = self.head
+
+        while ptr:
+            next = ptr.next
+            ptr.next = prev
+            prev = ptr
+            ptr = next
+
+        self.head = prev
+
 
     def print_list(self):
         if self.head is None:
@@ -128,6 +140,8 @@ LL.print_list()
 LL.delete(0)
 LL.print_list()
 print(LL.search_recursion(LL.head, 0))
+LL.reverse()
+LL.print_list()
 
 
 
