@@ -99,14 +99,14 @@ class LinkedList:
             ptr = ptr.next
         return False
     
-    # def search_recursion(self, lst, data):
-    #     if not lst.head:
-    #         return False
+    def search_recursion(self, head, data):
+        if not head:
+            return False
 
-    #     if lst.head.data == data:
-    #         return True
+        if head.data == data:
+            return True
         
-    #     return self.search_recursion(lst.head.next, data)
+        return self.search_recursion(head.next, data)
 
 
     def print_list(self):
@@ -127,7 +127,7 @@ for i in range(5):
 LL.print_list()
 LL.delete(0)
 LL.print_list()
-# print(LL.search_recursion(2))
+print(LL.search_recursion(LL.head, 0))
 
 
 
